@@ -1,11 +1,15 @@
 package haxChat;
 
-import ui.UI;
 import ui.startUp;
 public class haxChat {
-
 	public static void main(String[] args) {
-		start = new startUp();
+		
+		//Not working setup
+		startUp init = new startUp();
+		//Working setup
+		/*
+		 * UI g = new UI();
+		 */
 	}
 
 }

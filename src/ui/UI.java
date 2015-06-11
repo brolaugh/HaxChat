@@ -22,7 +22,7 @@ public class UI extends JFrame {
 	private Reader reader;
 	private JTextArea reply;
 
-	public UI() {
+	public UI(String nick, String server, String channel) {
 		super("HaxChat");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(600, 600));
@@ -59,7 +59,7 @@ public class UI extends JFrame {
 		// Final touches
 		pack();
 		setVisible(true);
-		reader = new Reader(messages);
+		reader = new Reader(messages, nick, server, channel);
 		
 	}
 

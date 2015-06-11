@@ -14,24 +14,23 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public abstract class startUp extends JFrame implements ActionListener {
+public class startUp extends JFrame implements ActionListener {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 	private JTextField nickField;
 	private JTextField serverField;
 	private JTextField channelField;
 	public startUp(){
 		super("HaxChat");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(600, 600));
-        setLayout(new GridLayout(1,4));
+        setPreferredSize(new Dimension(300, 200));
+        setLayout(new GridLayout(4,1));
         
         JPanel nickPanel = new JPanel();
         
         nickPanel.setLayout(new GridLayout(2,1));
-        JLabel nickLabel = new JLabel();
+        JLabel nickLabel = new JLabel("Nickname");
         nickField =new JTextField();
         add(nickPanel);
         nickPanel.add(nickLabel);
@@ -39,7 +38,7 @@ public abstract class startUp extends JFrame implements ActionListener {
         
         JPanel serverPanel = new JPanel();
         serverPanel.setLayout(new GridLayout(2,1));
-        JLabel serverLabel = new JLabel();
+        JLabel serverLabel = new JLabel("server");
         serverField =new JTextField();
         add(serverPanel);
         serverPanel.add(serverLabel);
@@ -47,7 +46,7 @@ public abstract class startUp extends JFrame implements ActionListener {
         
         JPanel channelPanel = new JPanel();
         channelPanel.setLayout(new GridLayout(2,1));
-        JLabel channelLabel = new JLabel();
+        JLabel channelLabel = new JLabel("#channel");
         channelField =new JTextField();
         add(channelPanel);
         channelPanel.add(channelLabel);
@@ -55,7 +54,7 @@ public abstract class startUp extends JFrame implements ActionListener {
         
         JButton butt = new JButton("Connect");
         butt.addActionListener(this);
-        
+        add(butt);
         
         pack();
         setVisible(true);
@@ -63,11 +62,14 @@ public abstract class startUp extends JFrame implements ActionListener {
 	}
 
 	private void actionPreformed(ActionEvent e) {
-		//Startar chatfönsteret, sätt server och nickname värden och gör fönstret synligt
-		Reader.setNick(nickField.getText());
-		Reader.setServer(serverField.getText());
-		Reader.setChannel(channelField.getText());
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		//Startar chatfönsteret, sätt server och nickname värden och gör fönstret synlig
 		this.setVisible(false);
-		UI chatWindow = new UI();
+		UI chatWindow = new UI(nickField.getText(), serverField.getText(), channelField.getText());
+		
 	}
 }

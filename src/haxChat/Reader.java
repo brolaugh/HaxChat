@@ -43,17 +43,17 @@ public class Reader extends Thread {
 	private BufferedWriter writer = null;
 	private BufferedReader reader;
 	
-	public Reader(JLabel label) {
+	public Reader(JLabel label, String nick, String server, String channel) {
 		this.label = label;
-			if(nick.isEmpty()){
+			if(nick.isEmpty() || nick == ""){
 				nick = "haxChat_client";
 				login = nick;
 				
 			}
-			if(server.isEmpty()){
+			if(server.isEmpty() || server == ""){
 				server = "irc.freenode.net";
 			}
-			if(channel.isEmpty()){
+			if(channel.isEmpty() || channel == "") {
 				channel = "#itg";
 			}
 		try {
